@@ -1,0 +1,29 @@
+section{
+    height: 40rem;
+    background-image: url(../pics/22.jpg);
+    background-size: cover;
+    text-align: center;
+    color: white;
+    
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.tag-slider {
+    background: rgb(58, 170, 245);
+    border: none;
+    color: var(--white);
+    padding: 0.5rem;
+    display: inline-block; }
+  
+    .boton{
+      width: 80%;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+
+    input{
+        width: 80%;
+        margin-top: 5px;
+    }
