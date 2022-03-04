@@ -43,6 +43,7 @@ deleteOldUsers()
 const { router: suscribeRouter } = require('./routes/suscribe')
 const { router: loginRouter } = require('./routes/login')
 const { router: pagoRouter } = require('./routes/pagoMp')
+const { router: upRouter } = require('./routes/up')
 
 app.use(express.static(path.join(__dirname, "public")))
  
@@ -76,6 +77,7 @@ function authenticate (req, res, next) {
 app.use('/suscribe', suscribeRouter)
 app.use('/login', loginRouter)
 app.use('/pago', pagoRouter)
+app.use('/up', upRouter)
 
 const PORT = 4000;
 

@@ -1,6 +1,6 @@
 const { ENUM } = require('sequelize');
 const Sequelize = require('sequelize')
-const { sequelize: db } = require('../db')
+const { sequelize: db, sequelize } = require('../db')
 
 const User = db.define('user', {
   id: {
@@ -20,6 +20,10 @@ const User = db.define('user', {
     type: Sequelize.STRING,
     defaultValue: false
   },
+  role: {
+    type : Sequelize.STRING,
+    defaultValue: 'user',
+  }
 });
 
 module.exports = User
