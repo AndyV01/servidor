@@ -6,7 +6,6 @@ require('dotenv').config()
 const router = express.Router()
 
 const Users = require('../model/user')
-const { redirect } = require('express/lib/response')
 
 //Inicio de Secion 
 router.post("/", async function (req, res) {
@@ -22,20 +21,49 @@ router.post("/", async function (req, res) {
         payload = {
             id: usuarioObj.id,
             password: usuarioObj.password,
-            email: usuarioObj.email
+            email: usuarioObj.email,
+            role: usuarioObj.role
         }
 
         const token = jwt.sign(payload, process.env.SECRET, { expiresIn: '10h' })
         res.cookie("token", token)
-        res.redirect("/archivos")
+        res.redirect("/galeria")
     }
     else {
         res.send(`
+        <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: sans-serif;
+            text-align: center;
+        }
+        button {
+            background-color: rgb(83, 158, 255);
+            color: white;
+            margin: 5px;
+            padding: 5px;
+            width: 50vh;
+            text-align: center;
+            border-radius: 5px;
+            border: none;
+            font-size: 30px;
+             }
+        h1 {
+            margin-top: 150px;
+            font-size: 70px;
+             }
+             div{
+                 backround-image: url(../public/img/cifrado.png);
+             }
+
+        </style>
+        <section class="container">
         <h1>No se pudo iniciar sesion</h1>
         <button onclick="window.location.href='/'">Volver</button>
-    `)
-    }
-
+        <div>
+        </div>
+        </section>
+    `) }
 })
 
 module.exports = {

@@ -7,6 +7,8 @@ const cookieParser = require('cookie-parser')
 const moment = require('moment')
 const Users = require('./model/user')
 const { Op } = require('sequelize');
+const Photo = require('./model/photo')
+const cloudinary = require('cloudinary')
 
 app.use(cors())
 app.use(cookieParser())
@@ -14,6 +16,12 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }));
+app.set("view engine", "ejs")
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+})
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -32,11 +40,11 @@ require('dotenv').config()
 deleteOldUsers = () => {
   let current = moment().subtract(30, 'days').format('YYYY-MM-DD')
   current = moment.utc(current).format()
-  Users.findAll({ cretatedAt: { [Op.gt]: new Date("2022-02-23") }}), (err) => {
-         if (err) {
-             console.log(err)
-         }
-       }
+  Users.findAll({ cretatedAt: { [Op.gt]: new Date("2022-02-23") } }), (err) => {
+    if (err) {
+      console.log(err)
+    }
+  }
 }
 deleteOldUsers()
 
@@ -46,7 +54,7 @@ const { router: pagoRouter } = require('./routes/pagoMp')
 const { router: upRouter } = require('./routes/up')
 
 app.use(express.static(path.join(__dirname, "public")))
- 
+
 app.get("/", function (req, res) {
   res.sendFile(path.join
     (__dirname, "public", "index.html"))
@@ -55,24 +63,42 @@ app.get("/conthxxxenido", function (req, res) {
   res.sendFile(path.join
     (__dirname, "public", "contenido.html"))
 })
-app.get("/archivos", authenticate, function(req, res){
-  res.sendFile(path.join
-    (__dirname, "public", "archivos.html"))
+app.get("/galeria", authenticate, async function (req, res) {
+  const photos = await Photo.findAll()
+  res.render("galeria", { photos })
+})
+app.get("/config", async function (req, res) {
+  const photos = await Photo.findAll()
+  res.render("archivos", { photos })
+})
+app.get("/config/delete/:photo_id", async (req, res) => {
+  const { photo_id } = req.params
+  try {
+    const photo = await Photo.destroy({
+      where: { id: photo_id }
+    })
+    const result = await cloudinary.v2.uploader.destroy(photo.public_id)
+    console.log(result)
+    res.redirect("/config")
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 //  Middleware de autenticacion de usuarios
-function authenticate (req, res, next) {
+function authenticate(req, res, next) {
   const access_token = req.cookies.token
-  if (!access_token) {return  res.send("no tine acceso");
+  if (!access_token) {
+    return res.send("no tine acceso");
   }
   jwt.verify(access_token, process.env.SECRET, (err, user) => {
-    if(err){
+    if (err) {
       res.send("no tine acceso");
-    }else{
+    } else {
       next();
     }
-    })
-  }
+  })
+}
 
 app.use('/suscribe', suscribeRouter)
 app.use('/login', loginRouter)
@@ -94,7 +120,7 @@ app.listen(PORT, async () => {
   console.log(`Server listening at port ${PORT}`);
   try {
     await sequelize.authenticate();
-    
+
     await sequelize.sync({ alter: true });
     console.log("All models were synchronized successfully.");
 

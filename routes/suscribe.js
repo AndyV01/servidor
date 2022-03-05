@@ -21,16 +21,18 @@ router.post("/", async function (req, res) {
     const user = await Users.create({
         name_u: name,
         email,
-        password
+        password,
+        expiresIn: '30d' 
       })
     payload = {
         id: user.id,
         password: user.password,
-        email: user.email
+        email: user.email,
+        role: user.role
     }
     const token = jwt.sign(payload, process.env.SECRET, { expiresIn: '10h' })
     res.cookie("token", token)
-    res.redirect("/archivos")
+    res.redirect("/galeria")
     } else {
     const response = {
         "error": "Debes completar los campos name y mail"

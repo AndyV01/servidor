@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Config.</title>
+    <link rel="stylesheet" href="./archivos.css">
+   
+</head>
+
+<body>
+    <style>
+        .boton {
+    text-decoration: none;
+    background-color: rgb(83, 158, 255);
+    color: white;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+    td{
+        padding: 10px;
+    }
+    .deleter{
+        text-decoration: none;
+        background-color: rgb(253, 78, 78);
+        color: white;
+        margin: 5px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(127, 255, 212, 0.479);
+        border-radius: 20px;
+    }
+    form{
+        margin: 15px;
+    }
+    </style>
+    <section>
+        <table>
+            <thead>
+               <tr>
+                   <th>Fotos Cargadas:</th>
+               </tr>
+            </thead>
+            <tbody>
+               <% photos.forEach(photo => { %>
+                   <tr>
+                       <td><%=photo.name%></td>
+                        <td>
+                            <a class="boton" href="<%=photo.imageURL%>" target="_blank">Ver</a>
+                            <a class="deleter" href="/config/delete/<%=photo.id%>">Borrar</a>
+                        </td>
+                   </tr>
+                   <% }); %>
+            </tbody>
+        </table>
+        <form action="/up" method="post" enctype="multipart/form-data">
+            <input name="file" type="file">
+            <input type="submit">
+        </form>
+        <a href="/galeria">Volver a la Galeria</a>
+    </section>
+</body>
+
+</html>

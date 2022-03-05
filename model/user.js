@@ -1,4 +1,3 @@
-const { ENUM } = require('sequelize');
 const Sequelize = require('sequelize')
 const { sequelize: db, sequelize } = require('../db')
 
