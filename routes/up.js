@@ -15,8 +15,11 @@ const fs = require('fs-extra')
 router.post('/', controller.upload,
     async (req, res) => {
   try {
-        const result = await cloudinary.v2.uploader.upload(req.file.path)
-
+        const result = await cloudinary.v2.uploader.upload(req.file.path, {
+           resource_type: 'video',
+              public_id: req.file.originalname,
+                overwrite: true
+        }) 
         const newPhoto = new Photo({
             imageURL: result.url,
             public_id: result.public_id,

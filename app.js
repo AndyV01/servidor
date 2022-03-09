@@ -8,7 +8,6 @@ const moment = require('moment')
 const Users = require('./model/user')
 const { Op } = require('sequelize');
 const Photo = require('./model/photo')
-const cloudinary = require('cloudinary')
 
 app.use(cors())
 app.use(cookieParser())
@@ -17,11 +16,6 @@ app.use(express.urlencoded({
   extended: true
 }));
 app.set("view engine", "ejs")
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET
-})
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -43,6 +37,12 @@ deleteOldUsers = () => {
   Users.findAll({ cretatedAt: { [Op.gt]: new Date("2022-02-23") } }), (err) => {
     if (err) {
       console.log(err)
+    } else {
+      Users.destroy({
+        where: {
+          createdAt: { [Op.lt]: current && Users.email !== "antonella@antonellaxxx.com" }
+        }
+      })
     }
   }
 }
@@ -52,6 +52,8 @@ const { router: suscribeRouter } = require('./routes/suscribe')
 const { router: loginRouter } = require('./routes/login')
 const { router: pagoRouter } = require('./routes/pagoMp')
 const { router: upRouter } = require('./routes/up')
+const { router: deleterRouter } = require('./routes/deleter')
+const { cursorTo } = require("readline")
 
 app.use(express.static(path.join(__dirname, "public")))
 
@@ -67,24 +69,22 @@ app.get("/galeria", authenticate, async function (req, res) {
   const photos = await Photo.findAll()
   res.render("galeria", { photos })
 })
-app.get("/config", async function (req, res) {
+app.get("/config", authenticateAdmin, async function (req, res) {
   const photos = await Photo.findAll()
   res.render("archivos", { photos })
 })
-app.get("/config/delete/:photo_id", async (req, res) => {
-  const { photo_id } = req.params
-  try {
-    const photo = await Photo.destroy({
-      where: { id: photo_id }
-    })
-    const result = await cloudinary.v2.uploader.destroy(photo.public_id)
-    console.log(result)
-    res.redirect("/config")
-  } catch (error) {
-    console.log(error)
-  }
-})
 
+function authenticateAdmin(req, res, next) {
+  const token = req.cookies.token 
+  if (token) {
+    jwt.verify(token, process.env.SECRET, function (err, decoded) {
+        if (decoded.email === "antonella@antonellaxxx.com" ) {  // if the user is admin
+          next()
+        } else {
+          res.redirect('/')
+        }
+      })
+}}
 //  Middleware de autenticacion de usuarios
 function authenticate(req, res, next) {
   const access_token = req.cookies.token
@@ -104,6 +104,7 @@ app.use('/suscribe', suscribeRouter)
 app.use('/login', loginRouter)
 app.use('/pago', pagoRouter)
 app.use('/up', upRouter)
+app.use('/config/delete', deleterRouter)
 
 const PORT = 4000;
 
@@ -120,10 +121,8 @@ app.listen(PORT, async () => {
   console.log(`Server listening at port ${PORT}`);
   try {
     await sequelize.authenticate();
-
     await sequelize.sync({ alter: true });
     console.log("All models were synchronized successfully.");
-
   } catch (error) {
     console.error('Unable to connect to the database:', error);
   }

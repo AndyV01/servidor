@@ -7,10 +7,11 @@ const storage = multer.diskStorage({
     filename: function (req, file, cb) {
         cb(null, file.originalname)
         console.log(file)
-    }
-      
+    }      
 })
 
-const upload = multer({ storage: storage })
+const upload = multer({ storage: storage,
+    limits: { fileSize: 100000000 },
+})
  
 exports.upload = upload.single('file');

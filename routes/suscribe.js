@@ -1,6 +1,6 @@
 const express = require('express')
 const bcrypt = require('bcrypt')
-const {redirect} = require('express/lib/response')
+
 const router = express.Router()
 const jwt = require('jsonwebtoken')
 
@@ -17,18 +17,18 @@ router.post("/", async function (req, res) {
       email,
       password
   }  
+  console.log(newUser)
   if (newUser.name && newUser.email && newUser.password) {
     const user = await Users.create({
         name_u: name,
         email,
         password,
-        expiresIn: '30d' 
+        expiresIn: '30d'
       })
     payload = {
         id: user.id,
         password: user.password,
         email: user.email,
-        role: user.role
     }
     const token = jwt.sign(payload, process.env.SECRET, { expiresIn: '10h' })
     res.cookie("token", token)

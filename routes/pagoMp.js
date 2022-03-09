@@ -4,7 +4,7 @@ const router = express.Router()
 const mercadopago = require('mercadopago')
 
 mercadopago.configure({
-    access_token: "TEST-1445686714358282-071223-ab0cbfc70e1c217dc48bbaa5e50048b0-276101439",
+    access_token: "APP_USR-5184633192879009-030520-2564f960c24a0bdad970844be3e938f6-340312644",
   });
 
   router.post("/", function (req, res) {

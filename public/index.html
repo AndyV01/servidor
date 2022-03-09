@@ -16,8 +16,8 @@
     <!-- Nabvar header -->
     <header class="navbar-header" id="navbar-header">
       <a href="#" class="brand-link is-size-3">
-        <i class="zmdi zmdi-camera"></i>
-        <span class="brand">Antonela XXX</span>
+        <i class="zmdi zmdi-camera icono"></i>
+        <span class="brand anto">Antonella XXX</span>
       </a>
       <button class="navbar-menu-mobile open is-size-3 is-hidden-desktop" id="navbar-menu-mobile">
         <i class="zmdi zmdi-menu"></i>
@@ -77,7 +77,9 @@
       </div>
   </div>
   <span>
+   <a href="https://instagram.com/antonellacorreamontero"><img id="insta" src="../pics/instagram.png" alt="instagram"></a>
     <a href="https://api.whatsapp.com/send?phone=59891887269&text=Hola20%vi20%tu20%anuncio20%en20%la20%pagina20%y20%queria20%que20%me20comentes."><img id="whatsapp" src="../pics/w.png" alt="whatsapp"></a>
+    <a data-scroll href="#contacto" id="form" class="navbar-a butt c sus">SUSCRIBETE</a>
   </span>
    <!-- About me -->
   <div class="container" id="about">
@@ -108,18 +110,18 @@
       <div class="container">
         <div class="columns is-multiline">
           <div class="column is-full has-text-centered">
-            <h1 class="title has-text-white is-size-3-mobile is-size-1-tablet">
+            <h1 class="title has-text-white is-size-3-mobile is-size-1-tablet anto">
               Contenido exclusivo
             </h1>
             <h5 class="subtitle is-size-5">
             100% Hot !
             </h5>
-            <a data-scroll href="#contacto" id="form" class="navbar-a butt">Suscribete para acceder al contenido</a>
+            <a data-scroll href="#contacto" id="form" class="navbar-a butt c">Suscribete para acceder al contenido</a>
           </div>
           <div class="column">
             <div class="banner-container">
               <span class="container-icon">
-               <i class="zmdi zmdi-camera-monochrome-photos zmdi-hc-2x"></i>
+               <i class="zmdi zmdi-camera-monochrome-photos zmdi-hc-2x icono"></i>
               </span>
               <h4 class="is-size-5 has-text-centered has-text-weight-bold">Fotos explicitas</h4>
               <p class="has-text-centered is-size-7-mobile">El mejor contenido XXX sin restricciones para mayores de edad</p>
@@ -128,7 +130,7 @@
           <div class="column">
             <div class="banner-container">
               <span class="container-icon">
-               <i class="zmdi zmdi-videocam zmdi-hc-2x"></i>
+               <i class="zmdi zmdi-videocam zmdi-hc-2x icono"></i>
               </span>
               <h4 class="is-size-5 has-text-centered has-text-weight-bold">Mejores Videos Xxx</h4>
               <p class="has-text-centered is-size-7-mobile">Galeria de videos sexsuales explicitos sin sensura 100% reales.</p>
@@ -147,7 +149,7 @@
   <div class="container" id="gallery">
     <div class="columns is-multiline">
       <div class="column has-text-centered is-full">
-        <h1 class="title is-size-3-mobile is-size-1-tablet has-text-weight">Mis fotos</h1>
+        <h1 class="title is-size-3-mobile is-size-1-tablet has-text-weight anto">Mis fotos</h1>
         <h5 class="subtitle is-size-6">100% reales verificadas</h5>
       </div>
       <div class="column">
@@ -221,8 +223,9 @@
   <div class="container" id="contacto">
     <div class="columns is-multiline">
       <div class="column has-text-centered is-full">
-        <h1 class="title is-size-3-mobile is-size-1-tablet has-text-weight">SUSCRIBETE</h1>
+        <h1 class="title is-size-3-mobile is-size-1-tablet has-text-weight ">SUSCRIBETE</h1>
         <h5 class="subtitle is-size-6">Para acceder a contenido exlusivo</h5>
+        <p class="a">todas las suscripciones son validas por 30 dias</p>
       </div>
       <div class="column">
         <form action="/pago" method="post">
@@ -265,30 +268,31 @@
   <footer class="my-footer">
     <div class="hero my-hero" style="--banner: url(./pics/08.jpg); --bg-atachment: none;">
       <div class="container-hero">
+  <!--conteneedor de los comentarios-->
+        <div id="disqus_thread"></div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://antonella-coments.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <div class="columns is-multiline">
           <div class="column is-full has-text-centered">
             <span class="has-text-white">
-              <i class="is-size-3-mobile is-size-1 zmdi zmdi-camera"></i>
+              <i class="is-size-3-mobile is-size-1 zmdi zmdi-camera icono"></i>
             </span>
-          </div>
-          <div class="column is-full">
-            <ul class="my-footer-ul">
-              <li  class="my-footer-item">
-                <a href="#" class="my-footer-link facebook">
-                  <i class="zmdi zmdi-facebook"></i>
-                </a>
-              </li>
-              <li class="my-footer-item">
-                <a href="https://instagram.com/antonellacorreamontero" class="my-footer-link instagram">
-                  <i class="zmdi zmdi-instagram"></i>
-                </a>
-              </li>
-              <li class="my-footer-item">
-                <a href="#" class="my-footer-link twitter">
-                  <i class="zmdi zmdi-twitter"></i>
-                </a>
-              </li>
-            </ul>
           </div>
           <div class="column has-text-centered is-size-7-mobile  is-full">
             <p class="footer-p has-text-white">© 2022 Antonella Xxx. Todos los derechos reservados</p>
