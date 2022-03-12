@@ -53,7 +53,6 @@ const { router: loginRouter } = require('./routes/login')
 const { router: pagoRouter } = require('./routes/pagoMp')
 const { router: upRouter } = require('./routes/up')
 const { router: deleterRouter } = require('./routes/deleter')
-const { cursorTo } = require("readline")
 
 app.use(express.static(path.join(__dirname, "public")))
 
@@ -61,9 +60,8 @@ app.get("/", function (req, res) {
   res.sendFile(path.join
     (__dirname, "public", "index.html"))
 })
-app.get("/conthxxxenido", function (req, res) {
-  res.sendFile(path.join
-    (__dirname, "public", "contenido.html"))
+app.get("/conthxxxenido00", function (req, res) {
+  res.render("contenido")
 })
 app.get("/galeria", authenticate, async function (req, res) {
   const photos = await Photo.findAll()

@@ -308,7 +308,7 @@ template {
   /*Paleta de Colores*/
   --primary: #021523;
   --danger: #eb7790;
-  --info: #b66c5c;
+  --info: #eb7790;
   --grey: #8E8E8E;
   --grey-ligth: #CEC8C8;
   --dark: #000000;
@@ -372,25 +372,25 @@ form {
 #whatsapp{
     cursor: pointer;
     position: fixed;
-    bottom: 530px;
+    bottom: 590px;
     right: 50px;
     height: 50px;
-    z-index: 5;
+    z-index: 50;
 }
 #insta{
     cursor: pointer;
     position: fixed;
-    bottom: 470px;
+    bottom: 530px;
     right: 50px;
     height: 50px;
-    z-index: 5;
+    z-index: 50;
 }
 .sus{
     cursor: pointer;
     position: fixed;
     bottom: 410px;
     right: 20px;
-    z-index: 5;
+    z-index: 50;
     box-shadow: 0 0 5px #eb7790, 0 0 25px #eb7790, 0 0 50px #eb7790,
     0 0 200px #eb7790;
 }
@@ -458,7 +458,7 @@ form {
     .c{
       animation: flash 1s linear infinite;
       background: #eb7790;
-      
+      font-size: 0.8rem;
       padding: 10px;
     }
     
@@ -788,9 +788,7 @@ form {
 .gallery-img {
   cursor: pointer;
 }
-figure img{
-  height: 70%;
-}
+
 
 .lightbox-overlay {
   position: fixed;
@@ -808,6 +806,7 @@ figure img{
 .lightbox-container {
   margin: 0 auto;
   text-align: center;
+  padding-top: 60px;
 }
 
 .close-modal {

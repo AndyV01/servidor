@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Config.</title>
-    <link rel="stylesheet" href="./archivos.css">
-
 </head>
 
 <body>
@@ -23,8 +21,9 @@
 
         td {
             padding: 10px;
+            display: inline-block;
+            
         }
-
         .deleter {
             text-decoration: none;
             background-color: rgb(253, 78, 78);
@@ -41,7 +40,6 @@
             background-color: rgba(127, 255, 212, 0.479);
             border-radius: 20px;
         }
-
         form {
             margin: 15px;
         }
@@ -56,7 +54,7 @@
             <tbody>
                 <% photos.forEach(photo => { %>
                 <tr>
-                    <td><%=photo.name%></td>
+                    <td class="a"><%=photo.name%></td>
                     <td>
                         <a class="boton" href="<%=photo.imageURL%>" target="_blank">Ver</a>
                         <a class="deleter" href="/config/delete/<%=photo.id%>">Borrar</a>

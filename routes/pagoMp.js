@@ -12,13 +12,13 @@ mercadopago.configure({
       items: [
         {
           title : "Suscripcion",
-          unit_price : 500,
+          unit_price : 1000,
           quantity : 1,
           currency_id : "UY"
         }
         ],
         back_urls: {
-          "success": "http://localhost:4000/conthxxxenido",
+          "success": "http://localhost:4000/conthxxxenido00",
           "failure": "http://localhost:4000/",
         },
         auto_return: "approved",

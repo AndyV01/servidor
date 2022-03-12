@@ -22,7 +22,6 @@ router.post("/", async function (req, res) {
             id: usuarioObj.id,
             password: usuarioObj.password,
             email: usuarioObj.email,
-            role: usuarioObj.role
         }
 
         const token = jwt.sign(payload, process.env.SECRET, { expiresIn: '10h' })
@@ -42,7 +41,7 @@ router.post("/", async function (req, res) {
             color: white;
             margin: 5px;
             padding: 5px;
-            width: 50vh;
+            width: 50vw;
             text-align: center;
             border-radius: 5px;
             border: none;
@@ -52,10 +51,6 @@ router.post("/", async function (req, res) {
             margin-top: 150px;
             font-size: 70px;
              }
-             div{
-                 backround-image: url(../public/img/cifrado.png);
-             }
-
         </style>
         <section class="container">
         <h1>No se pudo iniciar sesion</h1>
