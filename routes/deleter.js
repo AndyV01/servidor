@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const cloudinary = require('cloudinary')
-const Photo = require('../model/photo')
+const Photo = require('../model/photos')
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,

@@ -2,6 +2,7 @@ const Sequelize = require('sequelize')
 const { sequelize: db, sequelize } = require('../db')
 
 const Photo = db.define('photo', {
+    
     public_id: {
         type: Sequelize.STRING,
         defaultValue: false

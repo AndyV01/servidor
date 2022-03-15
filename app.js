@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser')
 const moment = require('moment')
 const Users = require('./model/user')
 const { Op } = require('sequelize');
-const Photo = require('./model/photo')
+const Photo = require('./model/photos')
 
 
 app.use(cors())
