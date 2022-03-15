@@ -107,7 +107,7 @@ app.use('/pago', pagoRouter)
 app.use('/up', upRouter)
 app.use('/config/delete', deleterRouter)
 
-const PORT = 4000;
+const PORT = 3000;
 
 // Test DB connection
 sequelize.authenticate()
