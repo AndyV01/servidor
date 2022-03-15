@@ -4,7 +4,7 @@
   "description": "servidor AntonellaXXX",
   "main": "app.js",
   "scripts": {
-    "test": "nodemon app.js"
+    "start": "node app.js"
   },
   "author": "Andres V.",
   "license": "ISC",

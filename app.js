@@ -9,6 +9,7 @@ const Users = require('./model/user')
 const { Op } = require('sequelize');
 const Photo = require('./model/photo')
 
+
 app.use(cors())
 app.use(cookieParser())
 app.use(express.json());
@@ -73,7 +74,9 @@ app.get("/config", authenticateAdmin, async function (req, res) {
 })
 
 function authenticateAdmin(req, res, next) {
+  
   const token = req.cookies.token 
+  console.log(cookies)
   if (token) {
     jwt.verify(token, process.env.SECRET, function (err, decoded) {
         if (decoded.email === "antonella@antonellaxxx.com" ) {  // if the user is admin
@@ -115,7 +118,7 @@ sequelize.authenticate()
     console.log('Error connecting Sequelize:', error);
   });
 
-app.listen(PORT, async () => {
+app.listen(PORT , async () => {
   console.log(`Server listening at port ${PORT}`);
   try {
     await sequelize.authenticate();

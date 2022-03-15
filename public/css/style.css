@@ -372,7 +372,7 @@ form {
 #whatsapp{
     cursor: pointer;
     position: fixed;
-    bottom: 590px;
+    bottom: 100px;
     right: 50px;
     height: 50px;
     z-index: 50;
@@ -380,7 +380,7 @@ form {
 #insta{
     cursor: pointer;
     position: fixed;
-    bottom: 530px;
+    bottom: 40px;
     right: 50px;
     height: 50px;
     z-index: 50;
