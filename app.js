@@ -65,18 +65,19 @@ app.get("/conthxxxenido00", function (req, res) {
   res.render("contenido")
 })
 app.get("/galeria", authenticate, async function (req, res) {
+  
   const photos = await Photo.findAll()
   res.render("galeria", { photos })
 })
 app.get("/config", authenticateAdmin, async function (req, res) {
+  
   const photos = await Photo.findAll()
   res.render("archivos", { photos })
 })
 
-function authenticateAdmin(req, res, next) {
-  
+function authenticateAdmin(req, res, next) { 
+
   const token = req.cookies.token 
-  console.log(cookies)
   if (token) {
     jwt.verify(token, process.env.SECRET, function (err, decoded) {
         if (decoded.email === "antonella@antonellaxxx.com" ) {  // if the user is admin
@@ -89,6 +90,7 @@ function authenticateAdmin(req, res, next) {
 //  Middleware de autenticacion de usuarios
 function authenticate(req, res, next) {
   const access_token = req.cookies.token
+  console.log(access_token)
   if (!access_token) {
     return res.send("no tine acceso");
   }

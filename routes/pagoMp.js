@@ -18,8 +18,8 @@ mercadopago.configure({
         }
         ],
         back_urls: {
-          "success": "http://localhost:4000/conthxxxenido00",
-          "failure": "http://localhost:4000/",
+          "success": "http://localhost:3000/conthxxxenido00",
+          "failure": "http://localhost:3000/",
         },
         auto_return: "approved",
         binary_mode: true,

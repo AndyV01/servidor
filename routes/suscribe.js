@@ -17,7 +17,7 @@ router.post("/", async function (req, res) {
       email,
       password
   }  
-  console.log(newUser)
+  
   if (newUser.name && newUser.email && newUser.password) {
     const user = await Users.create({
         name_u: name,
@@ -31,7 +31,7 @@ router.post("/", async function (req, res) {
         email: user.email,
     }
     const token = jwt.sign(payload, process.env.SECRET, { expiresIn: '10h' })
-    res.cookie("token", token)
+    res.cookie("token", token, { httpOnly: true })
     res.redirect("/galeria")
     } else {
     const response = {

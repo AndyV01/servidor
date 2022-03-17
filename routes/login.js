@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
+
 const router = express.Router()
 
 const Users = require('../model/user')
@@ -25,7 +26,9 @@ router.post("/", async function (req, res) {
         }
 
         const token = jwt.sign(payload, process.env.SECRET, { expiresIn: '10h' })
-        res.cookie("token", token)
+
+        res.cookie("token", token, { httpOnly: true })
+        
         res.redirect("/galeria")
     }
     else {
