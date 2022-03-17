@@ -17,18 +17,14 @@ router.post("/", async function (req, res) {
     if (usuarioObj !== null) {
         resultado = await bcrypt.compare(password, usuarioObj.password)
     }
-
     if (resultado) {
         payload = {
             id: usuarioObj.id,
             password: usuarioObj.password,
             email: usuarioObj.email,
         }
-
         const token = jwt.sign(payload, process.env.SECRET, { expiresIn: '10h' })
-
-        res.cookie("token", token, { httpOnly: true })
-        
+        res.cookie("token", token, { httpOnly: true })   
         res.redirect("/galeria")
     }
     else {
