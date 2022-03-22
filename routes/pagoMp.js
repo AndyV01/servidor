@@ -18,8 +18,8 @@ mercadopago.configure({
         }
         ],
         back_urls: {
-          "success": "http://localhost:3000/conthxxxenido00",
-          "failure": "http://localhost:3000/",
+          "success": "http://antonellaxxx.herokuapp.com/conthxxxenido00",
+          "failure": "http://antonellaxxx.herokuapp.com/",
         },
         auto_return: "approved",
         binary_mode: true,

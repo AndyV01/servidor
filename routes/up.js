@@ -25,6 +25,7 @@ router.post('/', controller.upload,
             public_id: result.public_id,
             name: req.file.filename
         })
+        
         await newPhoto.save()
         await fs.unlink(req.file.path)
         res.redirect('/config')
