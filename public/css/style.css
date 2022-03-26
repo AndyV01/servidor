@@ -544,7 +544,7 @@ form {
   background-image: url(../pics/05.jpg);
   position: relative;
   background-size: cover !important;
-  background-attachmen: none !important;
+  background-attachment: var(--bg-attachment) !important;
   background-position: center !important;
   margin-bottom: 2rem; }
   .my-hero::before {
