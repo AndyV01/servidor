@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/material-design-iconic-font.css">
   <title>Galeria</title>
   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 </head>
@@ -25,6 +26,28 @@
       margin: 0;
       padding: 0;
       background-image: url("../pics/humo.jpg");
+    }
+
+    .navbar {
+      background: #021523;
+    }
+
+    .anto {
+      text-shadow: 0 0 5px #eb7790, 0 0 25px #eb7790, 0 0 50px #eb7790,
+        0 0 200px #eb7790;
+    }
+
+    .navbar-header {
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .icono {
+      -webkit-filter: drop-shadow(0px 0px 5px #eb7790);
+      color: #eb7790;
+
     }
 
     .swiper {
@@ -69,10 +92,19 @@
       margin-top: 30px;
 
     }
-    .anto{
-  text-shadow:0 0 5px #eb7790, 0 0 25px #eb7790, 0 0 50px #eb7790,
-  0 0 200px #eb7790 ;
-}
+
+    .anto {
+      text-shadow: 0 0 5px #eb7790, 0 0 25px #eb7790, 0 0 50px #eb7790,
+        0 0 200px #eb7790;
+    }
+
+    .brand-link {
+      font-family: "poppins", Arial, Helvetica, sans-serif;
+      background-color: transparent;
+      font-size: 2rem;
+      color: white;
+      text-decoration: none;
+    }
 
     .c {
       background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
@@ -91,7 +123,7 @@
       text-decoration: none;
       background-color: #eb7790;
       box-shadow: 0 0 5px #eb7790, 0 0 25px #eb7790, 0 0 50px #eb7790,
-    0 0 200px #eb7790;
+        0 0 200px #eb7790;
       color: white;
       margin: 15px;
       padding: 5px;
@@ -100,6 +132,15 @@
       border-radius: 5px;
     }
   </style>
+  <nav class="navbar">
+    <!-- Nabvar header -->
+    <header class="navbar-header" id="navbar-header">
+      <a href="#" class="brand-link is-size-3">
+        <i class="zmdi zmdi-camera icono"></i>
+        <span class="brand anto">ANTONELLA XXX</span>
+      </a>
+    </header>
+  </nav>
   <section>
     <div class="title">
       <h1 class="c anto">contenido EXLUSIVO</h1>
