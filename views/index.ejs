@@ -45,26 +45,13 @@
   <!-- Sección del carrusel -->
   <div class="section-body" id="top">
   <div class="slide-contenedor" >
+    <% banner.forEach(photo => { %>
       <div class="miSlider fade">
           <div class="slider-body">
               <h2 class="is-size-3-mobile has-text-weight-bold slider-title">Acompañante</h2>
-              <p class="description-slider is-size-7-mobile"> Servico de acompañante de alto nivel para caballeros en Montevideo, la mejor atencion para una experiencia inolvidable </p>
+              <p class="description-slider is-size-7-mobile"> Servico de acompañante de alto nivel para caballeros, la mejor atencion para una experiencia inolvidable </p>
             </div>
-          <img src="../pics/04.jpg" alt="">
-      </div>
-      <div class="miSlider fade">
-          <div class="slider-body">
-              <h2 class="is-size-3-mobile has-text-weight-bold slider-title">Masajes</h2>
-              <p class="description-slider is-size-7-mobile"> Masajista titulada, vive una experiencia de relajacion total, masajes tantricos. </p>
-            </div>
-          <img src="../pics/01.jpg" alt="">
-      </div>
-      <div class="miSlider fade">
-          <div class="slider-body">
-              <h2 class="is-size-3-mobile has-text-weight-bold slider-title">Fantasias</h2>
-              <p class="description-slider is-size-7-mobile"> Puedo ser tu Ama y cumplir todas tus fantasias y fetiches de preferencia, juego de roles y mucho mas. </p>
-            </div>
-          <img src="../pics/09.jpg" alt="">
+          <img src="<%=photo.imageURL%>" alt="">
       </div>
       <div class="direcciones">
           <a href="#" class="atras" onclick="avanzaSlide(-1)">&#10094;</a>
@@ -75,6 +62,7 @@
           <span class="dot" onclick="posicionSlide(2)"></span>
           <span class="dot" onclick="posicionSlide(3)"></span>
       </div>
+    <% }); %>
   </div>
   <span>
    <a href="https://instagram.com/antonellacorreamontero"><img id="insta" src="../pics/instagram.png" alt="instagram"></a>
@@ -154,67 +142,13 @@
       </div>
       <div class="column">
         <div class="gallery-container" id="gallery-container">
+         <% photoHome.forEach(photo => { %>
           <div class="gallery-item">
             <figure class="image"> 
-              <img class="gallery-img" src="../pics/18.jpg" alt="">
+              <img class="gallery-img" src="<%=photo.imageURL%>" alt="">
             </figure>
           </div>
-          <div class="gallery-item">
-            <figure class="image">
-              <img class="gallery-img" src="../pics/16.jpg" alt="">
-            </figure>
-          </div>
-          <div class="gallery-item">
-            <figure class="image">
-
-              <img class="gallery-img" src="../pics/11.jpg" alt="">
-            </figure>
-          </div>
-          <div class="gallery-item">
-            <figure class="image">
-              <img  class="gallery-img" src="../pics/12.jpg" alt="">
-            </figure>
-          </div>
-          <div class="gallery-item">
-            <figure class="image">
-              <img  class="gallery-img" src="../pics/23.jpg" alt="">
-            </figure>
-          </div>
-          <div class="gallery-item">
-            <figure class="image">
-              <img  class="gallery-img" src="../pics/21.jpg" alt="">
-            </figure>
-          </div>
-          <div class="gallery-item">
-            <figure class="image">
-              <img  class="gallery-img" src="../pics/17.jpg" alt="">
-            </figure>
-          </div>
-          <div class="gallery-item">
-            <figure class="image">
-              <img  class="gallery-img" src="../pics/20.jpg" alt="">
-            </figure>
-          </div>
-          <div class="gallery-item">
-            <figure class="image">
-              <img  class="gallery-img" src="../pics/24.jpg" alt="">
-            </figure>
-          </div>
-          <div class="gallery-item">
-            <figure class="image">
-              <img  class="gallery-img" src="../pics/19.jpg" alt="">
-            </figure>
-          </div>
-          <div class="gallery-item">
-            <figure class="image">
-              <img  class="gallery-img" src="../pics/10.jpg" alt="">
-            </figure>
-          </div>
-          <div class="gallery-item">
-            <figure class="image">
-              <img  class="gallery-img" src="../pics/15.jpg" alt="">
-            </figure>
-          </div>
+          <% }); %>
         </div>
       </div>
     </div>

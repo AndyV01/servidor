@@ -8,7 +8,8 @@ const moment = require('moment')
 const Users = require('./model/user')
 const { Op } = require('sequelize');
 const Photo = require('./model/photos')
-
+const Banner = require('./model/baner')
+const PhotoHome = require('./model/photoHome')
 
 app.use(cors())
 app.use(cookieParser())
@@ -54,33 +55,37 @@ const { router: loginRouter } = require('./routes/login')
 const { router: pagoRouter } = require('./routes/pagoMp')
 const { router: upRouter } = require('./routes/up')
 const { router: deleterRouter } = require('./routes/deleter')
+const { router: deleterBannerRouter } = require('./routes/deleterBanner')
+const { router: deleterPhotoRouter } = require('./routes/deleterPhoto')
+const { router: upBannerRouter } = require('./routes/upBanner')
+const { router: upPhotoHomeRouter } = require('./routes/upPHome')
 
 app.use(express.static(path.join(__dirname, "public")))
 
-app.get("/", function (req, res) {
-  res.sendFile(path.join
-    (__dirname, "public", "index.html"))
+app.get("/", async function (req, res) {
+  const photoHome = await PhotoHome.findAll()
+  const banner = await Banner.findAll()
+  res.render("index", { banner, photoHome} )
 })
 app.get("/conthxxxenido00", function (req, res) {
   res.render("contenido")
 })
-app.get("/galeria", authenticate, async function (req, res) {
-  
+app.get("/galeria", authenticate, async function (req, res) {  
   const photos = await Photo.findAll()
   res.render("galeria", { photos })
 })
 app.get("/config", authenticateAdmin, async function (req, res) {
-  
+  const photoHome = await PhotoHome.findAll()
+  const banner = await Banner.findAll()
   const photos = await Photo.findAll()
-  res.render("archivos", { photos })
+  res.render("archivos", { photos, banner, photoHome })
 })
 
 function authenticateAdmin(req, res, next) { 
-
   const token = req.cookies.token 
   if (token) {
     jwt.verify(token, process.env.SECRET, function (err, decoded) {
-        if (decoded.email === "antonella@antonellaxxx.com" ) {  // if the user is admin
+        if (decoded.email === "esponjoso12@gmail.com" ) {  // if the user is admin
           next()
         } else {
           res.redirect('/')
@@ -106,8 +111,12 @@ function authenticate(req, res, next) {
 app.use('/suscribe', suscribeRouter)
 app.use('/login', loginRouter)
 app.use('/pago', pagoRouter)
-app.use('/up', upRouter)
+app.use('/up', upRouter )
+app.use('/upBanner', upBannerRouter)
+app.use('/upPHome', upPhotoHomeRouter)
 app.use('/config/delete', deleterRouter)
+app.use('/config/deleterBanner', deleterBannerRouter)
+app.use('/config/deleterPHome', deleterPhotoRouter)
 
 const PORT = 3000;
 
@@ -119,7 +128,6 @@ sequelize.authenticate()
   .catch((error) => {
     console.log('Error connecting Sequelize:', error);
   });
-
 app.listen ( process.env.PORT || PORT , async () => {
   console.log(`Server listening at port ${PORT}`);
   try {
