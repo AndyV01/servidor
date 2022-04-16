@@ -48,8 +48,7 @@
     <% banner.forEach(photo => { %>
       <div class="miSlider fade">
           <div class="slider-body">
-              <h2 class="is-size-3-mobile has-text-weight-bold slider-title">Acompañante</h2>
-              <p class="description-slider is-size-7-mobile"> Servico de acompañante de alto nivel para caballeros, la mejor atencion para una experiencia inolvidable </p>
+              <h2 class="is-size-3-mobile has-text-weight-bold slider-title"><%=photo.estado%></h2>
             </div>
           <img src="<%=photo.imageURL%>" alt="">
       </div>

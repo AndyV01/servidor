@@ -22,6 +22,13 @@
              border: 2px solid #f1f1f1;
                 width: 100%;
          }
+         .estado{
+             border:none;
+             border-bottom: 2px solid #f1f1f1;
+             background-color: transparent;
+             margin-bottom: 15px;
+             width: 80%;
+         }
         td {
             padding: 10px;
             display: flex;
@@ -34,7 +41,7 @@
             
         }
         video{
-            height: 50px;
+            height: 60px;
             border: 1px solid #f1f1f1;
             
         }
@@ -137,7 +144,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: rgb(17, 145, 102);
+            background: linear-gradient(to left, #da2864, #16a5a3);
             border-radius: 20px;
         }
         form {
@@ -155,7 +162,7 @@
                 <% photos.forEach(photo => { %>
                 <tr>
                     <td>
-                        <video src="<%=photo.imageURL%>"></video>
+                        <video controls src="<%=photo.imageURL%>"></video>
                         <div class="btn">
                         <a href="/config/delete/<%=photo.id%>">Borrar</a>
                         </div>
@@ -189,6 +196,8 @@
             </tbody>
         </table>
         <form action="/upBanner" method="post" enctype="multipart/form-data">
+            <h3>Estado:</h3>
+            <input type="text" name="estado" class="estado">
             <input name="file" type="file">
             <input type="submit">
         </form>
@@ -216,7 +225,7 @@
             <input name="file" type="file">
             <input type="submit">
         </form>
-        <a href="/galeria">Volver a la Galeria</a>
+        <a  class="boton" href="/galeria">Volver a la Galeria</a>
     </section>
 </body>
 

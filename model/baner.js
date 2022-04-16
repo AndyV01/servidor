@@ -15,6 +15,9 @@ const Banner = db.define('banner', {
         type: Sequelize.STRING,
         defaultValue: false
     },
+    estado: {
+        type: Sequelize.STRING,
+    }
      });
 
      module.exports = Banner

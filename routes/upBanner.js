@@ -22,8 +22,10 @@ router.post('/', controller.upload,
      const newPhoto = new Banner({
          imageURL: result.url,
          public_id: result.public_id,
-         name: req.file.filename
+         name: req.file.filename,
+         estado: req.body.estado
      })
+     console.log(newPhoto)
      await newPhoto.save()
      await fs.unlink(req.file.path)
      res.redirect('/config')
