@@ -660,7 +660,25 @@ form {
 .icono{
   -webkit-filter: drop-shadow(0px 0px 15px #eb7790);
   color: #eb7790;
+  animation: float 5s ease-in-out infinite;
    
+}
+@keyframes float {
+  0% {
+    transform: translateY(0); 
+  }
+  50% {
+    transform: translateY(-5px); 
+  }
+  75% {
+    transform: translateY(5px); 
+  }
+  100% {
+    transform: translateY(0); 
+  }
+}
+.cam{
+  animation-delay: 1s;
 }
 .anto{
   text-shadow:0 0 5px #eb7790, 0 0 25px #eb7790, 0 0 50px #eb7790,
