@@ -85,7 +85,7 @@ function authenticateAdmin(req, res, next) {
   const token = req.cookies.token 
   if (token) {
     jwt.verify(token, process.env.SECRET, function (err, decoded) {
-        if (decoded.email === "antonell@antonellaxxx.com" ) {  // if the user is admin
+        if (decoded.email === "antonella@antonellaxxx.com" ) {  // if the user is admin
           next()
         } else {
           res.redirect('/')
