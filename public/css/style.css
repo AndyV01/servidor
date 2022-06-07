@@ -326,7 +326,7 @@ form {
      }
   .navbar-menu-mobile {
     color: var(--danger);
-    border: 1px solid var(--white);
+    border: none;
     display: flex;
     justify-content: center;
     padding: 0.33333rem;
@@ -693,7 +693,6 @@ form {
   }
  .butt{
    border-radius: 20px;
-    background: rgba(105, 104, 104, 0.349);   
  }
 .b{
   margin-top: 1rem;
